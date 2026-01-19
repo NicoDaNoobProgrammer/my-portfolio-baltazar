@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hair -->
+  <path d="M 80 120 Q 80 60 200 60 Q 320 60 320 120 L 320 200 Q 320 220 300 220 L 100 220 Q 80 220 80 200 Z" fill="#4a4a4a"/>
+  
+  <!-- Face -->
+  <ellipse cx="200" cy="200" rx="100" ry="120" fill="#f5b765"/>
+  
+  <!-- Ears -->
+  <circle cx="80" cy="160" r="35" fill="#f5b765"/>
+  <circle cx="320" cy="160" r="35" fill="#f5b765"/>
+  
+  <!-- Eyes -->
+  <circle cx="160" cy="170" r="12" fill="#5a3a2a"/>
+  <circle cx="240" cy="170" r="12" fill="#5a3a2a"/>
+  
+  <!-- Nose (subtle) -->
+  <line x1="200" y1="190" x2="200" y2="210" stroke="#e0a050" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Mouth area (shaded) -->
+  <ellipse cx="200" cy="250" rx="50" ry="35" fill="#e0a050" opacity="0.6"/>
+  
+  <!-- Neck -->
+  <rect x="160" y="310" width="80" height="50" fill="#f5b765"/>
+  
+  <!-- Shirt -->
+  <path d="M 50 360 Q 50 320 200 320 Q 350 320 350 360 L 350 500 L 50 500 Z" fill="#3b9fd9"/>
+  
+  <!-- Shirt neckline (darker shade) -->
+  <ellipse cx="200" cy="340" rx="80" ry="30" fill="#1e5fa8"/>
+</svg>

@@ -1,0 +1,31 @@
+{
+  "name": "future-proof-portfolio",
+  "version": "1.0.0",
+  "description": "A portfolio website showcasing projects and skills.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "typescript"
+  ],
+  "author": "Nico Paolo L. Baltazar",
+  "license": "MIT",
+  "dependencies": {
+    "next": "13.4.10",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.9",
+    "@types/react": "19.2.8",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest"
+  }
+}
