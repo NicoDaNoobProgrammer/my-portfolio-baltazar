@@ -51,7 +51,7 @@ const HomePage = () => {
                 </main>
 
                 <aside className={styles.pageAvatar} aria-hidden>
-                    <img src="/images/avatar.svg" alt="Nico Paolo L. Baltazar" />
+                    <img src="/images/avatar.png" alt="Nico Paolo L. Baltazar" />
                 </aside>
             </div>
             <Footer />

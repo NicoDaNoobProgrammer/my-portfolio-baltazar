@@ -78,7 +78,7 @@
   width: 460px;
   height: 460px;
   flex: 0 0 460px;
-  position: fixed;
+  position: sticky;
   top: 120px;
   right: 64px;
   border-radius: 50%;
