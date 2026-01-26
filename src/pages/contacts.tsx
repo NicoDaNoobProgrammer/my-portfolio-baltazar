@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import GrowthTab from '../components/GrowthTab';
 import styles from '../styles/layout.module.css';
 import emailjs from '@emailjs/browser';
 
@@ -98,208 +97,250 @@ const Contacts: React.FC = () => {
         <div className={styles.layout}>
             <Header />
             <main className={styles.main}>
-                <h1>Get In Touch</h1>
-                <p className={styles.lead}>I'd love to hear from you. Send me a message and I'll respond as soon as possible.</p>
+                <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+                    <h1 style={{ marginBottom: '12px' }}>Get In Touch</h1>
+                    <p className={styles.lead} style={{ marginBottom: '48px', fontSize: '18px' }}>
+                        I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+                    </p>
 
-                <section className={styles.section}>
-                    <h2>EmailJS Configuration</h2>
-                    <button
-                        onClick={() => setShowConfig(!showConfig)}
-                        style={{
-                            padding: '8px 16px',
-                            marginBottom: '16px',
-                            backgroundColor: '#007bff',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: 'pointer',
-                            fontSize: '14px'
-                        }}
-                    >
-                        {showConfig ? 'Hide Configuration' : 'Show Configuration'}
-                    </button>
-
-                    {showConfig && (
-                        <div style={{
-                            backgroundColor: '#f5f5f5',
-                            padding: '16px',
-                            borderRadius: '4px',
-                            marginBottom: '24px'
-                        }}>
-                            <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>
-                                Get your EmailJS credentials from <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer">emailjs.com</a>
-                            </p>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                                <div>
-                                    <label htmlFor="serviceId" style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold' }}>Service ID</label>
-                                    <input
-                                        id="serviceId"
-                                        type="text"
-                                        name="serviceId"
-                                        value={emailConfig.serviceId}
-                                        onChange={handleConfigChange}
-                                        placeholder="service_xxxxxxxxxx"
-                                        style={{
-                                            width: '100%',
-                                            padding: '8px',
-                                            border: '1px solid #ddd',
-                                            borderRadius: '4px',
-                                            boxSizing: 'border-box'
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="templateId" style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold' }}>Template ID</label>
-                                    <input
-                                        id="templateId"
-                                        type="text"
-                                        name="templateId"
-                                        value={emailConfig.templateId}
-                                        onChange={handleConfigChange}
-                                        placeholder="template_xxxxxxxxxx"
-                                        style={{
-                                            width: '100%',
-                                            padding: '8px',
-                                            border: '1px solid #ddd',
-                                            borderRadius: '4px',
-                                            boxSizing: 'border-box'
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="publicKey" style={{ display: 'block', marginBottom: '4px', fontWeight: 'bold' }}>Public Key</label>
-                                    <input
-                                        id="publicKey"
-                                        type="text"
-                                        name="publicKey"
-                                        value={emailConfig.publicKey}
-                                        onChange={handleConfigChange}
-                                        placeholder="xxxxxxxxxx"
-                                        style={{
-                                            width: '100%',
-                                            padding: '8px',
-                                            border: '1px solid #ddd',
-                                            borderRadius: '4px',
-                                            boxSizing: 'border-box'
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                            <p style={{ fontSize: '12px', color: '#999', marginTop: '12px' }}>
-                                Your credentials are stored locally in your browser and are never sent to any server.
-                            </p>
-                        </div>
-                    )}
-                </section>
-
-                <section className={styles.section}>
-                    <h2>Contact Form</h2>
-                    {submitted && (
-                        <div style={{
-                            padding: '12px',
-                            marginBottom: '16px',
-                            backgroundColor: '#d4edda',
-                            color: '#155724',
-                            borderRadius: '4px',
-                            border: '1px solid #c3e6cb'
-                        }}>
-                            ✓ Message sent successfully! Thank you for reaching out.
-                        </div>
-                    )}
-                    {error && (
-                        <div style={{
-                            padding: '12px',
-                            marginBottom: '16px',
-                            backgroundColor: '#f8d7da',
-                            color: '#721c24',
-                            borderRadius: '4px',
-                            border: '1px solid #f5c6cb'
-                        }}>
-                            ✗ {error}
-                        </div>
-                    )}
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '500px' }}>
-                        <div>
-                            <label htmlFor="name" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Name</label>
-                            <input
-                                id="name"
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleFormChange}
-                                placeholder="Your name"
-                                required
-                                style={{
-                                    width: '100%',
-                                    padding: '10px',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    fontSize: '16px',
-                                    boxSizing: 'border-box'
-                                }}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="email" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Email</label>
-                            <input
-                                id="email"
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleFormChange}
-                                placeholder="your.email@example.com"
-                                required
-                                style={{
-                                    width: '100%',
-                                    padding: '10px',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    fontSize: '16px',
-                                    boxSizing: 'border-box'
-                                }}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="message" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleFormChange}
-                                placeholder="Your message here..."
-                                required
-                                rows={5}
-                                style={{
-                                    width: '100%',
-                                    padding: '10px',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    fontSize: '16px',
-                                    fontFamily: 'inherit',
-                                    boxSizing: 'border-box'
-                                }}
-                            />
-                        </div>
+                    {/* Config Section */}
+                    <section className={styles.section} style={{ backgroundColor: '#f9f9f9', padding: '24px', borderRadius: '8px', marginBottom: '48px' }}>
+                        <h2 style={{ marginBottom: '16px' }}>EmailJS Configuration</h2>
                         <button
-                            type="submit"
-                            disabled={loading}
+                            onClick={() => setShowConfig(!showConfig)}
                             style={{
                                 padding: '10px 20px',
-                                backgroundColor: '#28a745',
+                                marginBottom: '16px',
+                                backgroundColor: '#007bff',
                                 color: 'white',
                                 border: 'none',
-                                borderRadius: '4px',
-                                cursor: loading ? 'not-allowed' : 'pointer',
-                                fontSize: '16px',
-                                opacity: loading ? 0.6 : 1
+                                borderRadius: '6px',
+                                cursor: 'pointer',
+                                fontSize: '14px',
+                                fontWeight: '500',
+                                transition: 'background-color 0.2s'
                             }}
+                            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#0056b3')}
+                            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#007bff')}
                         >
-                            {loading ? 'Sending...' : 'Send Message'}
+                            {showConfig ? '✕ Hide Configuration' : '⚙ Show Configuration'}
                         </button>
-                    </form>
-                </section>
 
-                <GrowthTab />
+                        {showConfig && (
+                            <div style={{
+                                backgroundColor: 'white',
+                                padding: '20px',
+                                borderRadius: '6px',
+                                border: '1px solid #e0e0e0'
+                            }}>
+                                <p style={{ marginBottom: '16px', fontSize: '14px', color: '#666' }}>
+                                    Get your EmailJS credentials from <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none' }}>emailjs.com</a>
+                                </p>
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '16px' }}>
+                                    <div>
+                                        <label htmlFor="serviceId" style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '14px' }}>Service ID</label>
+                                        <input
+                                            id="serviceId"
+                                            type="text"
+                                            name="serviceId"
+                                            value={emailConfig.serviceId}
+                                            onChange={handleConfigChange}
+                                            placeholder="service_xxxxxxxxxx"
+                                            style={{
+                                                width: '100%',
+                                                padding: '10px',
+                                                border: '1px solid #ddd',
+                                                borderRadius: '4px',
+                                                boxSizing: 'border-box',
+                                                fontSize: '14px'
+                                            }}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="templateId" style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '14px' }}>Template ID</label>
+                                        <input
+                                            id="templateId"
+                                            type="text"
+                                            name="templateId"
+                                            value={emailConfig.templateId}
+                                            onChange={handleConfigChange}
+                                            placeholder="template_xxxxxxxxxx"
+                                            style={{
+                                                width: '100%',
+                                                padding: '10px',
+                                                border: '1px solid #ddd',
+                                                borderRadius: '4px',
+                                                boxSizing: 'border-box',
+                                                fontSize: '14px'
+                                            }}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="publicKey" style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '14px' }}>Public Key</label>
+                                        <input
+                                            id="publicKey"
+                                            type="text"
+                                            name="publicKey"
+                                            value={emailConfig.publicKey}
+                                            onChange={handleConfigChange}
+                                            placeholder="xxxxxxxxxx"
+                                            style={{
+                                                width: '100%',
+                                                padding: '10px',
+                                                border: '1px solid #ddd',
+                                                borderRadius: '4px',
+                                                boxSizing: 'border-box',
+                                                fontSize: '14px'
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                                <p style={{ fontSize: '12px', color: '#999', marginTop: '16px', backgroundColor: '#f5f5f5', padding: '12px', borderRadius: '4px', margin: '16px 0 0 0' }}>
+                                    🔒 Your credentials are stored locally in your browser and are never sent to any server.
+                                </p>
+                            </div>
+                        )}
+                    </section>
+
+                    {/* Contact Form Section */}
+                    <section className={styles.section}>
+                        <h2 style={{ marginBottom: '24px' }}>Send me a Message</h2>
+                        
+                        {submitted && (
+                            <div style={{
+                                padding: '16px',
+                                marginBottom: '24px',
+                                backgroundColor: '#d4edda',
+                                color: '#155724',
+                                borderRadius: '6px',
+                                border: '1px solid #c3e6cb',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px'
+                            }}>
+                                <span style={{ fontSize: '20px' }}>✓</span>
+                                <span>Message sent successfully! Thank you for reaching out. I'll get back to you soon.</span>
+                            </div>
+                        )}
+                        
+                        {error && (
+                            <div style={{
+                                padding: '16px',
+                                marginBottom: '24px',
+                                backgroundColor: '#f8d7da',
+                                color: '#721c24',
+                                borderRadius: '6px',
+                                border: '1px solid #f5c6cb',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px'
+                            }}>
+                                <span style={{ fontSize: '20px' }}>✗</span>
+                                <span>{error}</span>
+                            </div>
+                        )}
+
+                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                            <div>
+                                <label htmlFor="name" style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '15px' }}>Full Name *</label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleFormChange}
+                                    placeholder="Your name"
+                                    required
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '6px',
+                                        fontSize: '15px',
+                                        boxSizing: 'border-box',
+                                        transition: 'border-color 0.2s',
+                                        outline: 'none'
+                                    }}
+                                    onFocus={(e) => (e.target.style.borderColor = '#007bff')}
+                                    onBlur={(e) => (e.target.style.borderColor = '#ddd')}
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="email" style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '15px' }}>Email Address *</label>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleFormChange}
+                                    placeholder="your.email@example.com"
+                                    required
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '6px',
+                                        fontSize: '15px',
+                                        boxSizing: 'border-box',
+                                        transition: 'border-color 0.2s',
+                                        outline: 'none'
+                                    }}
+                                    onFocus={(e) => (e.target.style.borderColor = '#007bff')}
+                                    onBlur={(e) => (e.target.style.borderColor = '#ddd')}
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="message" style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '15px' }}>Message *</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleFormChange}
+                                    placeholder="Your message here... Tell me about your project, question, or inquiry."
+                                    required
+                                    rows={6}
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '6px',
+                                        fontSize: '15px',
+                                        fontFamily: 'inherit',
+                                        boxSizing: 'border-box',
+                                        transition: 'border-color 0.2s',
+                                        outline: 'none',
+                                        resize: 'vertical'
+                                    }}
+                                    onFocus={(e) => (e.target.style.borderColor = '#007bff')}
+                                    onBlur={(e) => (e.target.style.borderColor = '#ddd')}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                style={{
+                                    padding: '14px 28px',
+                                    backgroundColor: loading ? '#ccc' : '#28a745',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '6px',
+                                    cursor: loading ? 'not-allowed' : 'pointer',
+                                    fontSize: '16px',
+                                    fontWeight: '600',
+                                    transition: 'background-color 0.2s',
+                                    alignSelf: 'flex-start'
+                                }}
+                                onMouseOver={(e) => !loading && (e.currentTarget.style.backgroundColor = '#218838')}
+                                onMouseOut={(e) => !loading && (e.currentTarget.style.backgroundColor = '#28a745')}
+                            >
+                                {loading ? '⏳ Sending...' : '📧 Send Message'}
+                            </button>
+                        </form>
+                    </section>
+                </div>
             </main>
             <Footer />
         </div>
