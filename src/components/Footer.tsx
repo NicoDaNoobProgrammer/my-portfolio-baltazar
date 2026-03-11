@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
     return (
@@ -7,9 +8,9 @@ const Footer: React.FC = () => {
                 <p>&copy; {new Date().getFullYear()} Nico Paolo L. Baltazar. All rights reserved.</p>
                 <nav aria-label="Footer navigation">
                     <ul className="footer-nav">
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/projects">Projects</a></li>
-                        <li><a href="mailto:youremail@example.com">Contact</a></li>
+                        <li><Link href="/about">About</Link></li>
+                        <li><Link href="/projects">Projects</Link></li>
+                        <li><Link href="/contact">Contact</Link></li>
                     </ul>
                 </nav>
             </div>
